@@ -9,7 +9,6 @@ import com.board.dao.BoardVO;
 @Service
 public class BoardService {
 	
-	@Inject
 	private BoardDAO boardDao;
 
 	public void insert(BoardVO board) throws Exception {

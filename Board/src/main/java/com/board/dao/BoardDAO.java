@@ -10,7 +10,6 @@ import org.springframework.stereotype.Repository;
 @Repository
 public class BoardDAO implements BoardDAOinterface {
 	
-	@Inject
 	private SqlSession sqlSession;
 
 	private static String namespace="com.board.mapper.BoardMapper";
