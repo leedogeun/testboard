@@ -3,74 +3,74 @@ package com.board.dao;
 import java.util.Date;
 
 public class BoardVO {
-	private long Tno;
-	private String Ttitle;
-	private String Twriter;
-	private Date Tdate;
-	private String Tcontents;
-	private String Tpassword;
-	private long Treference;
+	private long tNo;
+	private String tTitle;
+	private String tWriter;
+	private Date tDate;
+	private String tContents;
+	private String tPassword;
+	private long tReference;
 
-	public long getTno() {
-		return Tno;
+	public long gettNo() {
+		return tNo;
 	}
 
-	public void setTno(long tno) {
-		Tno = tno;
+	public void settNo(long tNo) {
+		this.tNo = tNo;
 	}
 
-	public String getTtitle() {
-		return Ttitle;
+	public String gettTitle() {
+		return tTitle;
 	}
 
-	public void setTtitle(String ttitle) {
-		Ttitle = ttitle;
+	public void settTitle(String tTitle) {
+		this.tTitle = tTitle;
 	}
 
-	public String getTwriter() {
-		return Twriter;
+	public String gettWriter() {
+		return tWriter;
 	}
 
-	public void setTwriter(String twriter) {
-		Twriter = twriter;
+	public void settWriter(String tWriter) {
+		this.tWriter = tWriter;
 	}
 
-	public Date getTdate() {
-		return Tdate;
+	public Date gettDate() {
+		return tDate;
 	}
 
-	public void setTdate(Date tdate) {
-		Tdate = tdate;
+	public void settDate(Date tDate) {
+		this.tDate = tDate;
 	}
 
-	public String getTcontents() {
-		return Tcontents;
+	public String gettContents() {
+		return tContents;
 	}
 
-	public void setTcontents(String tcontents) {
-		Tcontents = tcontents;
+	public void settContents(String tContents) {
+		this.tContents = tContents;
 	}
 
-	public String getTpassword() {
-		return Tpassword;
+	public String gettPassword() {
+		return tPassword;
 	}
 
-	public void setTpassword(String tpassword) {
-		Tpassword = tpassword;
+	public void settPassword(String tPassword) {
+		this.tPassword = tPassword;
 	}
 
-	public long getTreference() {
-		return Treference;
+	public long gettReference() {
+		return tReference;
 	}
 
-	public void setTreference(long treference) {
-		Treference = treference;
+	public void settReference(long tReference) {
+		this.tReference = tReference;
 	}
 
 	@Override
 	public String toString() {
-		return "BoardVO [Tno=" + Tno + ", Ttitle=" + Ttitle + ", Twriter=" + Twriter + ", Tdate=" + Tdate
-				+ ", Tcontents=" + Tcontents + ", Tpassword=" + Tpassword + ", Treference=" + Treference + "]";
-	}
+		return "BoardVO [tNo=" + tNo + ", tTitle=" + tTitle + ", tWriter=" + tWriter + ", tDate=" + tDate
+				+ ", tContents=" + tContents + ", tPassword=" + tPassword + ", tReference=" + tReference + "]";
+	}	
 
 }
