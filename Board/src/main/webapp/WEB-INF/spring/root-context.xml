@@ -12,6 +12,8 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
+	
+	
 
 
 	<!-- MariaDB JDBC DataSource 마리아 db랑 연동 한다,. -->

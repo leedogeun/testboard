@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE log4j:configuration PUBLIC "-//APACHE//DTD LOG4J 1.2//EN" "log4j.dtd">
-<log4j:configuration xmlns:log4j="http://jakarta.apache.org/log4j/">
+<log4j:configuration
+	xmlns:log4j="http://jakarta.apache.org/log4j/">
 
 	<!-- Appenders -->
 	<appender name="console"
@@ -15,6 +16,13 @@
 	<logger name="com.board.web">
 		<level value="info" />
 	</logger>
+	
+	<!-- 여기가 만약 동작 한다면, 찍힐것이다. -->
+	<logger name="com.board.controller">
+		<level value="trace" />
+	</logger>
+	
+	
 
 	<!-- 3rdparty Loggers -->
 	<logger name="org.springframework.core">
