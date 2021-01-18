@@ -17,7 +17,8 @@
 		infrastructure -->
 
 
-	<!-- 여기서 인터셉터 해서 작업 처리 한다. -->
+	<!-- 
+	여기서 인터셉터 해서 작업 처리 한다. 
 	<interceptors>
 		<interceptor>
 			<mapping path="/**" />
@@ -26,7 +27,7 @@
 			</beans:bean>
 		</interceptor>
 	</interceptors>
-	<!-- 여기까지 가 로그처리 과정 작성중 -->
+	-->
 
 
 

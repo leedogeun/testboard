@@ -12,25 +12,32 @@
 		http://www.springframework.org/schema/aop http://www.springframework.org/schema/aop/spring-aop-3.1.xsd">
 
 	<!-- Root Context: defines shared resources visible to all other web components -->
-	
-	
+
+
 
 
 	<!-- MariaDB JDBC DataSource 마리아 db랑 연동 한다,. -->
-	<bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
-		<property name="driverClassName" value="org.mariadb.jdbc.Driver" />
-		<property name="url" value="jdbc:mariadb://127.0.0.1:3306/testboard" />
+	<bean id="dataSource"
+		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+		<property name="driverClassName"
+			value="org.mariadb.jdbc.Driver" />
+		<property name="url"
+			value="jdbc:mariadb://127.0.0.1:3306/testboard" />
 		<property name="username" value="boardMaster" />
 		<property name="password" value="1234" />
 	</bean>
 
 	<!-- mybatis SqlSessionFactoryBean -->
-	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
+	<bean id="sqlSessionFactory"
+		class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
-		<property name="configLocation" value="classpath:/mybatis-config.xml" />
-		<property name="mapperLocations" value="classpath:/mappers/**/*Mapper.xml" />
+		<property name="configLocation"
+			value="classpath:/mybatis-config.xml" />
+		<property name="mapperLocations"
+			value="classpath:/mappers/**/*Mapper.xml" />
 	</bean>
-	
-	<context:component-scan base-package="com.board.dao" />
+
+	<context:component-scan
+		base-package="com.board.dao" />
 
 </beans>

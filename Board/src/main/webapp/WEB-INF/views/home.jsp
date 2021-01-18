@@ -10,5 +10,7 @@
 </h1>
 
 <P>  The time on the server is ${serverTime}. </P>
+
+<a href="/list">게시판 보러가기</a>
 </body>
 </html>
