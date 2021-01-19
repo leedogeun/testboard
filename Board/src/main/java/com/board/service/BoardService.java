@@ -2,33 +2,35 @@ package com.board.service;
 
 import java.util.List;
 import javax.inject.Inject;
+
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.board.dao.BoardDAO;
+import com.board.dao.BoardDAOinterface;
 import com.board.dao.BoardVO;
 
 @Service
 public class BoardService {
 	
-	private BoardDAO boardDao;
-
+	private BoardDAOinterface dao;
+	
 	public void insert(BoardVO board) throws Exception {
-		boardDao.insert(board);
+		dao.insert(board);
 	}
 
 	public List<BoardVO> list() throws Exception {
-		return boardDao.list();
+		return dao.list();
 	}
 
 	public BoardVO detail(Integer Tno) throws Exception {
-		return boardDao.detail(Tno);
+		return dao.detail(Tno);
 	}
 
 	public void update(BoardVO VO) throws Exception {
-		boardDao.update(VO);
+		dao.update(VO);
 	}
 
 	public void delete(Integer Tno) throws Exception {
-		boardDao.delete(Tno);
+		dao.delete(Tno);
 	}
-
 }

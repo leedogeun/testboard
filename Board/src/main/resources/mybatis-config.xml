@@ -2,8 +2,8 @@
 <!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
 <configuration>
 		<!-- 
-	<settings>
 		이거 한줄이 로그를 나타낼 수 있게 한다.
+	<settings>
 		<setting name="log4j" value="LOG4J"/>	
 	</settings>
 		 -->
