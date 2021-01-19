@@ -21,7 +21,7 @@ public class BoardDAO implements BoardDAOinterface {
 
 	@Override
 	public List<BoardVO> list() throws Exception {
-		return sqlSession.selectList(namespace+".list");
+		return sqlSession.selectList(namespace + ".list");
 	}
 
 	@Override

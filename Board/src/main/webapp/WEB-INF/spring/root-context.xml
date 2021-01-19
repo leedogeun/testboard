@@ -15,8 +15,6 @@
 	<!-- Root Context: defines shared resources visible to all other web components -->
 
 
-
-
 	<!-- MariaDB JDBC DataSource 마리아 db랑 연동 한다,. -->
 	<bean id="dataSource"
 		class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -38,10 +36,15 @@
 			value="classpath:/mappers/**/*Mapper.xml" />
 	</bean>
 
+	<bean id="sqlSession"
+		class="org.mybatis.spring.SqlSessionTemplate"
+		destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory"
+			ref="sqlSessionFactory" />
+	</bean>
+
 	<context:component-scan
 		base-package="com.board.dao" />
-	<context:component-scan
-		base-package="com.board.mapper" />
 	<context:component-scan
 		base-package="com.board.service" />
 	<context:component-scan

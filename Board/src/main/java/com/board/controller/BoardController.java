@@ -1,29 +1,42 @@
 package com.board.controller;
 
 import java.util.List;
-import java.util.Locale;
-
+import javax.inject.Inject;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-
 import com.board.dao.BoardVO;
 import com.board.service.BoardService;
 
 @Controller
+@RequestMapping("/board/*")
 public class BoardController {
 
+	@Inject
+	BoardService service;
+	
+	@RequestMapping(value = "/list", method = RequestMethod.GET)
+	public void getList(Model model) throws Exception {
+	
+		List<BoardVO> list = null;
+		list = service.list();
+		
+		model.addAttribute("list", list);
+	}
+
+
+	
+	/*
 	private static Logger boardlogger = LoggerFactory.getLogger(BoardController.class);
+	boardlogger.info("board write");
 	
 	BoardService boardService;
 
 	@RequestMapping(value = { "/board_write", "/write" }, method = RequestMethod.GET)
 	public String write(Locale locale, Model model) {
-		boardlogger.info("board write", locale);
 
 		return "board_writer";
 	}
@@ -61,5 +74,7 @@ public class BoardController {
 
 		return "board_list";
 	}
+	
+	*/
 
 }
