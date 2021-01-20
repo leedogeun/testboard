@@ -22,20 +22,20 @@ public class BoardController {
 	
 		List<BoardVO> list = null;
 		list = service.list();
-		
 		model.addAttribute("list", list);
 	}
-		@RequestMapping(value = "/write", method = RequestMethod.GET)
-		public void getWrite() throws Exception{
-			
-		}
+	
+	@RequestMapping(value = "/write", method = RequestMethod.GET)
+	public void getWrite() throws Exception{
 		
-		@RequestMapping(value = "/write", method = RequestMethod.POST)
-		public String postWrite(BoardVO vo) throws Exception{
-			service.insert(vo);
-			
-			return "redirect:/board/list";
-		}
+	}
+		
+	@RequestMapping(value = "/write", method = RequestMethod.POST)
+	public String postWrite(BoardVO vo) throws Exception{
+		service.insert(vo);
+	
+		return "redirect:/list";
+	}
 /*
 	private static Logger boardlogger = LoggerFactory.getLogger(BoardController.class);
 	@Inject

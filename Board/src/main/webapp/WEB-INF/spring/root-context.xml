@@ -30,7 +30,7 @@
 		<property name="configLocation"
 			value="classpath:/mybatis-config.xml" />
 		<property name="mapperLocations"
-			value="classpath*:com.board.mapper.boardMapper.xml" />
+			value="classpath*:/mappers/*Mapper.xml" />
 	</bean>
 
 	<bean id="sqlSession"
@@ -39,9 +39,9 @@
 		<constructor-arg name="sqlSessionFactory"
 			ref="sqlSessionFactory" />
 	</bean>
-	<context:component-scan	base-package="com.board.controller" />
 	<context:component-scan	base-package="com.board.dao" />
 	<context:component-scan	base-package="com.board.service" />
+	<context:component-scan	base-package="com.board.mappers" />
 
 
 

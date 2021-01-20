@@ -13,7 +13,7 @@ public class BoardDAO implements BoardDAOinterface {
 	@Inject
 	private SqlSession sqlSession;
 
-	private static String namespace="com.board.mapper.boardMapper";
+	private static String namespace="com.board.mappers.board";
 
 	@Override
 	public void insert(BoardVO VO) throws Exception {
@@ -26,8 +26,8 @@ public class BoardDAO implements BoardDAOinterface {
 	}
 
 	@Override
-	public BoardVO detail(Integer Tno) throws Exception {
-		return sqlSession.selectOne(namespace+".detail",Tno);
+	public BoardVO detail(Integer tNo) throws Exception {
+		return sqlSession.selectOne(namespace+".detail",tNo);
 	}
 
 	@Override
@@ -36,8 +36,8 @@ public class BoardDAO implements BoardDAOinterface {
 	}
 
 	@Override
-	public void delete(Integer Tno) throws Exception {
-		sqlSession.delete(namespace+".delete",Tno);
+	public void delete(Integer tNo) throws Exception {
+		sqlSession.delete(namespace+".delete",tNo);
 	}
 	
 
