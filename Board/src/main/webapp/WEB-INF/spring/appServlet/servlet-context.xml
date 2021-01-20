@@ -16,25 +16,9 @@
 	<!-- DispatcherServlet Context: defines this servlet's request-processing 
 		infrastructure -->
 
-
-	<!-- 
-	여기서 인터셉터 해서 작업 처리 한다. 
-	<interceptors>
-		<interceptor>
-			<mapping path="/**" />
-			<beans:bean id="loggerInterceptor"
-				class="com.board.logger.Loggerinterceptor">
-			</beans:bean>
-		</interceptor>
-	</interceptors>
-	-->
-
-
-
-
-
 	<!-- Enables the Spring MVC @Controller programming model -->
 	<annotation-driven />
+	<!-- <mvc:annotation-driven /> 위랑 동일 -->
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving 
 		up static resources in the ${webappRoot}/resources directory -->
@@ -51,7 +35,6 @@
 
 	<context:component-scan
 		base-package="com.board.controller" />
-
-
+		
 
 </beans:beans>

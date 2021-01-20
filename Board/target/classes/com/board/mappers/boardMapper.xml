@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="UTF-8" ?>
-<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<?xml version="1.0" encoding="UTF-8"?>
 
-<mapper namespace="com.board.mapper.BoardMapper">
-
+<mapper namespace="com.board.mapper.boardMapper">
 	<insert id="insert" parameterType="com.board.dao.BoardVO">
 		<![CDATA[
 			insert into testboard.board(Ttitle, Twriter, Tcontent, Tpassword) 
-			values(#{Ttitle}, #{Twriter}, #{Tcontent}, #{Tpassword})
+			values(#{Ttitle}, #{Twriter}, #{Tcontent}, #{Tpassword});
 		]]>
 	</insert>
 	<select id="list" resultType="com.board.dao.BoardVO">
@@ -19,7 +17,7 @@
 		<![CDATA[
 			select Tno, Ttitle, Twriter, Tdate, Tcontents, Tpassword 
 			from testboard.board 
-			where Tno = #{Tno}
+			where Tno = #{Tno};
 		]]>
 	</select>
 	<update id="update">
@@ -27,13 +25,13 @@
 			update testboard.board 
 			set Ttitle=#{Ttitle}, 
 			Tcontents=#{Tcontents} 
-			where Tno = #{Tno}
+			where Tno = #{Tno};
 		]]>
 	</update>
 	<delete id="delete">
 		<![CDATA[
 			delete from testboard.board 
-			where Tno = #{Tno}
+			where Tno = #{Tno};
 		]]>
 	</delete>
 </mapper>

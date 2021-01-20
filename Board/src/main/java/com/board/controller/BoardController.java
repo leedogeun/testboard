@@ -12,7 +12,6 @@ import com.board.dao.BoardVO;
 import com.board.service.BoardService;
 
 @Controller
-@RequestMapping("/board/*")
 public class BoardController {
 
 	@Inject
@@ -26,23 +25,26 @@ public class BoardController {
 		
 		model.addAttribute("list", list);
 	}
-
-
-	
-	/*
+		@RequestMapping(value = "/write", method = RequestMethod.GET)
+		public void getWrite() throws Exception{
+			
+		}
+		
+		@RequestMapping(value = "/write", method = RequestMethod.POST)
+		public String postWrite(BoardVO vo) throws Exception{
+			service.insert(vo);
+			
+			return "redirect:/board/list";
+		}
+/*
 	private static Logger boardlogger = LoggerFactory.getLogger(BoardController.class);
-	boardlogger.info("board write");
-	
+	@Inject
 	BoardService boardService;
-
-	@RequestMapping(value = { "/board_write", "/write" }, method = RequestMethod.GET)
-	public String write(Locale locale, Model model) {
-
-		return "board_writer";
-	}
-
+	
 	@RequestMapping(value = { "/board_list", "/board", "/list" }, method = RequestMethod.GET)
 	public String list(Model model) throws Exception {
+		System.out.print("여기 까지 도착 했는가? mapping 이후");
+		
 		boardlogger.info("board list", boardService);
 		
 		List<BoardVO> list;
@@ -50,9 +52,20 @@ public class BoardController {
 		list = boardService.list();
 		
 		model.addAttribute("list", list);
-
-		return "board_list";
+		
+		return "list";
 	}
+
+	
+	boardlogger.info("board write");
+	
+
+	@RequestMapping(value = { "/board_write", "/write" }, method = RequestMethod.GET)
+	public String write(Locale locale, Model model) {
+
+		return "board_writer";
+	}
+
 
 	@RequestMapping(value = { "/board_detail", "/detail" }, method = RequestMethod.GET)
 	public String detail(Locale locale, Model model) {
@@ -74,7 +87,6 @@ public class BoardController {
 
 		return "board_list";
 	}
-	
-	*/
+*/	
 
 }
