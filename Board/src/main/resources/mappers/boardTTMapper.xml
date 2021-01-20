@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mapper namespace="com.board.mappers.boardMapper">
+<mapper namespace="com.board.mappers.board">
 
 	<insert id="insert" parameterType="com.board.dao.BoardVO">
 		<![CDATA[

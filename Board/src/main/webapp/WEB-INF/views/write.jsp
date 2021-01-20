@@ -11,9 +11,9 @@
 		<label>제목</label><input type="text" name="tTitle" /><br />
 		<label>작성자</label><input type="text" name="tWriter" /><br />
 		<label>비밀번호</label><input type="password" name="tPassword" /><br />
-		<label>내용</label><textarea cols="50" rows="5" name="tContents"></textarea>
+		<label>내용</label><textarea cols="50" rows="5" name="tContents"></textarea><br />
 
-		<button type="submit">작성</button>
+		<button type="submit">작성</button><button type="button" onClick="location.href='/list'">목록</button>
 	</form>
 </body>
 </html>

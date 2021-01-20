@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<mapper namespace="com.board.mapper.board">
+<mapper namespace="com.board.mappers.boardMapper">
+
 	<insert id="insert" parameterType="com.board.dao.BoardVO">
 		<![CDATA[
 			insert into testboard.board(Ttitle, Twriter, Tcontent, Tpassword) 

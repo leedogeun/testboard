@@ -13,8 +13,8 @@ public class BoardService implements BoardServiceinterface {
 	private BoardDAO dao;
 
 	@Override
-	public void insert(BoardVO board) throws Exception {
-		dao.insert(board);
+	public void insert(BoardVO vo) throws Exception {
+		dao.insert(vo);
 	}
 
 	@Override
@@ -28,13 +28,12 @@ public class BoardService implements BoardServiceinterface {
 	}
 
 	@Override
-	public void update(BoardVO VO) throws Exception {
-		dao.update(VO);
+	public void update(BoardVO vo) throws Exception {
+		dao.update(vo);
 	}
 
 	@Override
 	public void delete(Integer tNo) throws Exception {
-
 		dao.delete(tNo);
 	}
 
