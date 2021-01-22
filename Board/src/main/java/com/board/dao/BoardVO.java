@@ -3,19 +3,19 @@ package com.board.dao;
 import java.util.Date;
 
 public class BoardVO {
-	private long tNo;
+	private Long tNo;
 	private String tTitle;
 	private String tWriter;
 	private Date tDate;
 	private String tContents;
 	private String tPassword;
-	private long tReference;
+	private Long tReference;
 
-	public long gettNo() {
+	public Long gettNo() {
 		return tNo;
 	}
 
-	public void settNo(long tNo) {
+	public void settNo(Long tNo) {
 		this.tNo = tNo;
 	}
 
@@ -59,11 +59,11 @@ public class BoardVO {
 		this.tPassword = tPassword;
 	}
 
-	public long gettReference() {
+	public Long gettReference() {
 		return tReference;
 	}
 
-	public void settReference(long tReference) {
+	public void settReference(Long tReference) {
 		this.tReference = tReference;
 	}
 
@@ -71,6 +71,6 @@ public class BoardVO {
 	public String toString() {
 		return "BoardVO [tNo=" + tNo + ", tTitle=" + tTitle + ", tWriter=" + tWriter + ", tDate=" + tDate
 				+ ", tContents=" + tContents + ", tPassword=" + tPassword + ", tReference=" + tReference + "]";
-	}	
+	}
 
 }

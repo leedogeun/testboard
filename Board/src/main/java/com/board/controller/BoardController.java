@@ -19,19 +19,11 @@ public class BoardController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
-		System.out.println("list? 1");
+		System.out.println("list");
 
 		List<BoardVO> list = null;
-
-		System.out.println("list? 2");
-
 		list = service.list();
-
-		System.out.println("list? 3");
-
 		model.addAttribute("list", list);
-
-		System.out.println("list? 4");
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
