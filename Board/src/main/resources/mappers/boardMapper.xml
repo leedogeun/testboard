@@ -1,28 +1,41 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
 <mapper namespace="com.board.mappers.board">
 
-	<insert id="insert" parameterType="com.board.dao.BoardVO">
-			insert into testboard.board(Ttitle, Twriter, Tcontent, Tpassword) 
-			values(#{Ttitle}, #{Twriter}, #{Tcontent}, #{Tpassword});
+
+	<resultMap id="resul" type="BoardVO">
+		<result property="tNo" 			column="Tno" />
+		<result property="tTitle" 		column="Ttitle" />
+		<result property="tWriter" 		column="Twriter" />
+		<result property="tDate" 		column="Tdate" />
+		<result property="tContents" 	column="Tcontents" />
+		<result property="tPassword" 	column="Tpassword" />
+		<result property="tReference" 	column="Treference" />
+	</resultMap>
+
+	<select id="list" resultMap="resul">
+		select Tno, Ttitle, Twriter, Tdate
+		from testboard.board
+	</select>
+	<insert id="write" parameterType="BoardVO">
+		insert into testboard.board(Ttitle, Twriter, Tcontent, Tpassword)
+		values(#{tTitle}, #{tWriter}, #{tContents}, #{tPassword});
 	</insert>
-	<select id="list" resultType="com.board.dao.BoardVO">
-			select Tno, Ttitle, Twriter, Tdate
-			from testboard.board
+	<select id="view" parameterType="int" resultMap="BoardVO">
+		select Tno, Ttitle, Twriter, Tdate, Tcontents, Tpassword
+		from testboard.board
+		where Tno = #{tNo};
 	</select>
-	<select id="detail" resultType="com.board.dao.BoardVO">
-			select Tno, Ttitle, Twriter, Tdate, Tcontents, Tpassword 
-			from testboard.board 
-			where Tno = #{Tno};
-	</select>
-	<update id="update">
-			update testboard.board 
-			set Ttitle=#{Ttitle}, 
-			Tcontents=#{Tcontents} 
-			where Tno = #{Tno};
+	<update id="update" parameterType="BoardVO">
+		update testboard.board
+		set Ttitle=#{tTitle},
+		Tcontents=#{tContents}
+		where Tno = #{tNo};
 	</update>
-	<delete id="delete">
-			delete from testboard.board 
-			where Tno = #{Tno};
+	<delete id="delete" parameterType="int">
+		delete from testboard.board
+		where Tno = #{tNo};
 	</delete>
+
 </mapper>

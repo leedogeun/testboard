@@ -19,7 +19,7 @@ public class BoardController {
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
-		System.out.println("list");
+		System.out.println("control-list-get");
 
 		List<BoardVO> list = null;
 		list = service.list();
@@ -28,13 +28,13 @@ public class BoardController {
 
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
-		System.out.println("write-get");
+		System.out.println("control-write-get");
 
 	}
 
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String postWrite(BoardVO vo) throws Exception {
-		System.out.println("write-post");
+		System.out.println("control-write-post");
 		
 		service.insert(vo);
 		return "redirect:/list";
@@ -42,7 +42,7 @@ public class BoardController {
 	
 	@RequestMapping(value="/detail", method = RequestMethod.GET)
 	public void getDetail() throws Exception{
-		System.out.println("detail-get");
+		System.out.println("control-detail-get");
 		
 	}
 	/*
