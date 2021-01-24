@@ -8,6 +8,8 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+
 import com.board.dao.BoardVO;
 import com.board.service.BoardService;
 
@@ -15,7 +17,7 @@ import com.board.service.BoardService;
 public class BoardController {
 
 	@Inject
-	BoardService service;
+	private BoardService service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
@@ -45,47 +47,30 @@ public class BoardController {
 		System.out.println("control-detail-get");
 		
 	}
-	/*
-	 * 
-	 * @RequestMapping(value = { "/board_list", "/board", "/list" }, method =
-	 * RequestMethod.GET) public String list(Model model) throws Exception {
-	 * 
-	 * 
-	 * List<BoardVO> list;
-	 * 
-	 * list = boardService.list();
-	 * 
-	 * model.addAttribute("list", list);
-	 * 
-	 * return "list"; }
-	 * 
-	 * 
-	 * boardlogger.info("board write");
-	 * 
-	 * 
-	 * @RequestMapping(value = { "/board_write", "/write" }, method =
-	 * RequestMethod.GET) public String write(Locale locale, Model model) {
-	 * 
-	 * return "board_writer"; }
-	 * 
-	 * 
-	 * @RequestMapping(value = { "/board_detail", "/detail" }, method =
-	 * RequestMethod.GET) public String detail(Locale locale, Model model) {
-	 * boardlogger.info("board detail", locale);
-	 * 
-	 * return "board_detailview"; }
-	 * 
-	 * @RequestMapping(value = { "/board_update", "/update" }, method =
-	 * RequestMethod.GET) public String update(Locale locale, Model model) {
-	 * boardlogger.info("board update", locale);
-	 * 
-	 * return "board_list"; }
-	 * 
-	 * @RequestMapping(value = { "/board_delete", "/delete" }, method =
-	 * RequestMethod.GET) public String delete(Locale locale, Model model) {
-	 * boardlogger.info("board delete", locale);
-	 * 
-	 * return "board_list"; }
-	 */
+	
+	@RequestMapping(value = "/update", method = RequestMethod.GET)
+	public void getUpdate(@RequestParam("tNo") int tNo, Model model) throws Exception {
+
+		BoardVO vo = service.detail(tNo);
+		 
+		model.addAttribute("view", vo);
+	}
+	
+	@RequestMapping(value = "/update", method = RequestMethod.POST)
+	public String postUpdate(BoardVO vo) throws Exception {
+
+		service.update(vo);
+		 
+		 return "redirect:/view?tNo=" + vo.gettNo();
+	}
+	
+	// 게시물 삭제
+	@RequestMapping(value = "/delete", method = RequestMethod.GET)
+	public String getDelete(@RequestParam("tNo") int tNo) throws Exception {
+		
+		service.delete(tNo);		
+
+		return "redirect:/list";
+	}
 
 }
