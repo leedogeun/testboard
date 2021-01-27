@@ -11,66 +11,49 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.dao.BoardVO;
-import com.board.service.BoardService;
+import com.board.service.BoardServiceinterface;
 
 @Controller
+@RequestMapping("/board/*")
 public class BoardController {
 
 	@Inject
-	private BoardService service;
+	BoardServiceinterface service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
 	public void getList(Model model) throws Exception {
-		System.out.println("control-list-get");
-
 		List<BoardVO> list = null;
 		list = service.list();
 		model.addAttribute("list", list);
 	}
-
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
-		System.out.println("control-write-get");
 
 	}
-
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String postWrite(BoardVO vo) throws Exception {
-		System.out.println("control-write-post");
-		
-		service.insert(vo);
-		return "redirect:/list";
+		service.write(vo);
+		return "redirect:/board/list";
 	}
-	
-	@RequestMapping(value="/detail", method = RequestMethod.GET)
-	public void getDetail() throws Exception{
-		System.out.println("control-detail-get");
-		
-	}
-	
-	@RequestMapping(value = "/update", method = RequestMethod.GET)
-	public void getUpdate(@RequestParam("tNo") int tNo, Model model) throws Exception {
-
-		BoardVO vo = service.detail(tNo);
-		 
+	@RequestMapping(value = "/view", method = RequestMethod.GET)
+	public void getView(@RequestParam("tNo") long tNo, Model model) throws Exception {
+		BoardVO vo = service.view(tNo);
 		model.addAttribute("view", vo);
 	}
-	
-	@RequestMapping(value = "/update", method = RequestMethod.POST)
-	public String postUpdate(BoardVO vo) throws Exception {
-
-		service.update(vo);
-		 
-		 return "redirect:/view?tNo=" + vo.gettNo();
+	@RequestMapping(value = "/modify", method = RequestMethod.GET)
+	public void getModify(@RequestParam("tNo") long tNo, Model model) throws Exception {
+		BoardVO vo = service.view(tNo);
+		model.addAttribute("view", vo);
+		System.out.println("view" + tNo);
 	}
-	
-	// 게시물 삭제
+	@RequestMapping(value = "/modify", method = RequestMethod.POST)
+	public String postModify(BoardVO vo) throws Exception {
+		service.modify(vo);
+		return "redirect:/board/view?tNo=" + vo.gettNo();
+	}
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("tNo") int tNo) throws Exception {
-		
-		service.delete(tNo);		
-
-		return "redirect:/list";
+	public String getDelete(@RequestParam("tNo") long tNo) throws Exception {
+		service.delete(tNo);
+		return "redirect:/board/list";
 	}
-
 }

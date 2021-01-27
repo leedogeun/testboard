@@ -3,8 +3,5 @@
 <configuration>
 
 
-	<typeAliases>
-		<typeAlias type="com.board.dao.BoardVO" alias="BoardVO" />
-	</typeAliases>
 
 </configuration>
