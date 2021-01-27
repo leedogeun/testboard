@@ -12,7 +12,7 @@ public class BoardDAO implements BoardDAOinterface {
 	
 	@Inject
 	private SqlSession sql;
-	private static String namespace = "com.board.mappers.board";
+	private static String namespace = "com.board.mappers.boardMapper";
 
 	@Override
 	public List<BoardVO> list() throws Exception {

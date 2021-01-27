@@ -18,33 +18,31 @@
 		<property name="username" value="boardMaster" />
 		<property name="password" value="1234" />
 	</bean>
-
 	<!-- Mybatis 연동 -->
 	<bean id="sqlSessionFactory" class="org.mybatis.spring.SqlSessionFactoryBean">
 		<property name="dataSource" ref="dataSource" />
 		<property name="configLocation" value="classpath:/mybatis-config.xml" />
 		<property name="mapperLocations" value="classpath*:**/resources/mappers/*" />
+	</bean>
+	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
+		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
+	</bean>
 <!-- 
 		<property name="transactionFactory">
 			<bean class="org.mybatis.spring.transaction.SpringManagedTransactionFactory" />
 		</property>
  -->
-	</bean>
-	
-	<!-- DAO(interface) 위치를 basePackage로.. -->
+	<!-- DAO(interface) 위치를 basePackage로.. 
 	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
 		<property name="basePackage" value="com.board.dao" />
-	</bean>
-	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
-		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
 
 	<context:component-scan base-package="com.board.*" use-default-filters="false">
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
 		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
 	</context:component-scan>
+	-->
 
-
-	<mybatis-spring:scan base-package="classpath*:mappers/*Mapper.xml" />
+	<mybatis-spring:scan base-package="classpath*:mappers/*" />
 	<context:component-scan base-package="com.board.*" />
 </beans>

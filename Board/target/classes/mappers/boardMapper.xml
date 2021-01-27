@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.board.mappers.board">
+<mapper namespace="com.board.mappers.boardMapper">
 <!-- 
-	<resultMap id="resul" type="BoardVO">
+	<resultMap id="resul" type="com.board.dao.BoardVO">
 		<result property="tNo" 			column="Tno" />
 		<result property="tTitle" 		column="Ttitle" />
 		<result property="tWriter" 		column="Twriter" />
@@ -14,26 +14,26 @@
 	</resultMap>
  -->
 
-	<select id="list" resultMap="BoardVO">
+	<select id="list" resultMap="com.board.dao.com.board.dao.BoardVO">
 		select tNo, tNo, tWriter, tDate
 		from testboard.board
 	</select>
-	<insert id="write" parameterType="BoardVO">
+	<insert id="write" parameterType="com.board.dao.BoardVO">
 		insert into testboard.board(tTitle, tWriter, tContents, tPassword)
 		values(#{tTitle}, #{tWriter}, #{tContents}, #{tPassword});
 	</insert>
-	<select id="view" parameterType="int" resultMap="BoardVO">
+	<select id="view" parameterType="long" resultMap="com.board.dao.BoardVO">
 		select tNo, tTitle, tWriter, tDate, tContents, tPassword
 		from testboard.board
 		where tNo = #{tNo};
 	</select>
-	<update id="update" parameterType="BoardVO">
+	<update id="modify" parameterType="com.board.dao.BoardVO">
 		update testboard.board
 		set tTitle=#{tTitle},
 		tContents=#{tContents}
 		where tNo = #{tNo};
 	</update>
-	<delete id="delete" parameterType="int">
+	<delete id="delete" parameterType="long">
 		delete from testboard.board
 		where tNo = #{tNo};
 	</delete>
