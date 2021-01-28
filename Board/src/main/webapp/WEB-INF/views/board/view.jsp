@@ -16,6 +16,7 @@
 
 	<div>
 		<a href="/board/modify?tNo=${view.tNo}">게시물 수정</a>
+		<a href="/board/delete?tNo=${view.tNo}">게시물 삭제</a>
 	</div>
 </body>
 </html>
