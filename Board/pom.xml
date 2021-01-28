@@ -45,6 +45,14 @@
 			<version>${org.springframework-version}</version>
 		</dependency>
 
+		<!-- spring-test -->
+		<dependency>
+			<groupId>org.springframework</groupId>
+			<artifactId>spring-test</artifactId>
+			<version>${org.springframework-version}</version>
+			<scope>test</scope>
+		</dependency>
+
 
 		<!-- 추가된 부분 - db테스트시 사용 -->
 		<dependency>

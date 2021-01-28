@@ -8,7 +8,7 @@
 <title>게시물 조회</title>
 </head>
 <body>
-	<form method="post">
+	<form action="/board/write" method="post">
 	<label>제목</label>
 	<input type="text" name="tTitle" /><br />
 	

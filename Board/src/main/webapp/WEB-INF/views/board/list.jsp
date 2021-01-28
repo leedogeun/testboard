@@ -25,7 +25,7 @@
 			<tr>
 				<td>${list.tNo}</td>
 				<td>
-					<a href="/board/view?tNo=${list.tNo}">${list.title}</a>
+					<a href="/board/view?tNo=${list.tNo}">${list.tTitle}</a>
 				</td>
 				<td>${list.tWriter}</td>
 				<td>${list.tDate}</td>

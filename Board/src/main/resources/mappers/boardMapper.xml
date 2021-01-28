@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.board.mappers.boardMapper">
+<mapper namespace="com.board.mappers.board">
 <!-- 
 	<resultMap id="resul" type="com.board.dao.BoardVO">
 		<result property="tNo" 			column="Tno" />
@@ -13,9 +13,8 @@
 		<result property="tReference" 	column="Treference" />
 	</resultMap>
  -->
-
 	<select id="list" resultMap="com.board.dao.com.board.dao.BoardVO">
-		select tNo, tNo, tWriter, tDate
+		select tNo, tTitle, tWriter, tDate
 		from testboard.board
 	</select>
 	<insert id="write" parameterType="com.board.dao.BoardVO">

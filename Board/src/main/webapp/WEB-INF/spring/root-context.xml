@@ -27,22 +27,8 @@
 	<bean id="sqlSession" class="org.mybatis.spring.SqlSessionTemplate" destroy-method="clearCache">
 		<constructor-arg name="sqlSessionFactory" ref="sqlSessionFactory" />
 	</bean>
-<!-- 
-		<property name="transactionFactory">
-			<bean class="org.mybatis.spring.transaction.SpringManagedTransactionFactory" />
-		</property>
- -->
-	<!-- DAO(interface) 위치를 basePackage로.. 
-	<bean class="org.mybatis.spring.mapper.MapperScannerConfigurer">
-		<property name="basePackage" value="com.board.dao" />
-	</bean>
-
-	<context:component-scan base-package="com.board.*" use-default-filters="false">
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Service" />
-		<context:include-filter type="annotation" expression="org.springframework.stereotype.Repository" />
-	</context:component-scan>
-	-->
 
 	<mybatis-spring:scan base-package="classpath*:mappers/*" />
 	<context:component-scan base-package="com.board.*" />
+	
 </beans>

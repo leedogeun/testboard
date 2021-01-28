@@ -6,14 +6,14 @@ import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
 
-import com.board.dao.BoardDAOinterface;
+import com.board.dao.BoardDAO;
 import com.board.dao.BoardVO;
 
 @Service
 public class BoardService implements BoardServiceinterface {
 
 	@Inject
-	private BoardDAOinterface dao;
+	private BoardDAO dao;
 	
 	@Override
 	public List<BoardVO> list() throws Exception {
