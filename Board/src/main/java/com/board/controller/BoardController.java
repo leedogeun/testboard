@@ -40,11 +40,17 @@ public class BoardController {
 		BoardVO vo = service.view(tNo);
 		model.addAttribute("view", vo);
 	}
+	/*
+	@RequestMapping(value = "/check", method = RequestMethod.GET)
+	public void getCheck(@RequestParam("tNo") long tNo, Model model) throws Exception {
+		BoardVO vo = service.view(tNo);
+		model.addAttribute("view", vo);
+	}
+	 * */
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
 	public void getModify(@RequestParam("tNo") long tNo, Model model) throws Exception {
 		BoardVO vo = service.view(tNo);
 		model.addAttribute("view", vo);
-		System.out.println("view" + tNo);
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String postModify(BoardVO vo) throws Exception {

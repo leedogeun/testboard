@@ -29,9 +29,10 @@
 					<td>${list.tDate}</td>
 				</tr>
 			</c:forEach>
-
-			<p><a href="/board/write">게시물 작성</a>
 		</tbody>
 	</table>
+	<div>
+		<a href="/board/write">게시물 작성</a>
+	</div>
 </body>
 </html>

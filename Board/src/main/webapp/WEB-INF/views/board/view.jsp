@@ -6,6 +6,18 @@
 <head>
 <meta charset="UTF-8">
 <title>게시물 작성</title>
+
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script type="text/javascript">
+	$(document).ready(function(){
+		$('.modify'}).on('click',function(e){ 
+			var password = $('#password').val(); 
+			console.log(password);;
+		}); 
+	});
+
+</script>
+
 </head>
 <body>
 	<label>제목</label> ${view.tTitle}
@@ -15,8 +27,12 @@
 	<label>내용</label> ${view.tContents }
 
 	<div>
-		<a href="/board/modify?tNo=${view.tNo}">게시물 수정</a>
-		<a href="/board/delete?tNo=${view.tNo}">게시물 삭제</a>
+		<label>비밀번호</label>
+		<input id= "password" type="password" name="password" />
+
+		<input type="button" id="modify" class="modify?tNo=${view.tNo}" value="수정"/>
+		<input type="button" class="delete?tNo=${view.tNo}" value="삭제"/>
+		<a href="/board/list">게시물 목록</a>
 	</div>
 </body>
 </html>
