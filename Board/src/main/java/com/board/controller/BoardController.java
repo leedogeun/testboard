@@ -41,19 +41,18 @@ public class BoardController {
 		model.addAttribute("view", vo);
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void getModify(@RequestParam("tNo") long tNo, Model model) throws Exception {
-		BoardVO vo = service.view(tNo);
+	public void getModify(@RequestParam("tNo, tPassword") long tNo, String tPassword, Model model) throws Exception {
+		BoardVO vo = service.check(tNo, tPassword);
 		model.addAttribute("view", vo);
-		System.out.println("view" + tNo);
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String postModify(BoardVO vo) throws Exception {
 		service.modify(vo);
 		return "redirect:/board/view?tNo=" + vo.gettNo();
 	}
-	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("tNo") long tNo) throws Exception {
-		service.delete(tNo);
+	@RequestMapping(value = "/delete", method = RequestMethod.POST)
+	public String getDelete(@RequestParam("tNo, tPassword") long tNo, String tPassword) throws Exception {
+		service.delete(tNo,tPassword);
 		return "redirect:/board/list";
 	}
 }

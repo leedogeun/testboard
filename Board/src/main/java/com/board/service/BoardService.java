@@ -27,12 +27,17 @@ public class BoardService implements BoardServiceinterface {
 	public BoardVO view(long tNo) throws Exception {
 		return dao.view(tNo);
 	}
+	
+	@Override
+	public BoardVO check(long tNo, String tPassword) throws Exception {
+		return dao.check(tNo,tPassword);
+	}
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		dao.modify(vo);
 	}
 	@Override
-	public void delete(long tNo) throws Exception {
-		dao.delete(tNo);
+	public void delete(long tNo, String tPassword) throws Exception {
+		dao.delete(tNo, tPassword);
 	}
 }
