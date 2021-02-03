@@ -9,12 +9,11 @@
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
 <script type="text/javascript">
-	$(document).on(function(){
+	$(document).ready(function(){
 		$('.modify'}).on('click',function(e){ 
 			var password = $('#password').val(); 
 			console.log(password);;
-		});
-		$('.delete')
+		}); 
 	});
 
 </script>
@@ -29,10 +28,10 @@
 
 	<div>
 		<label>비밀번호</label>
-		<input id= "password" type="password" name="tPassword" />
+		<input id= "password" type="password" name="password" />
 
-		<input type="button" id="modify" class="modify?tNo=${view.tNo}&tPassword=${input[name='tPassword']}" value="수정"/>
-		<input type="button" id="delete" class="delete?tNo=${view.tNo}&tPassword=${input[name='tPassword']}" value="삭제"/>
+		<input type="button" id="modify" class="modify?tNo=${view.tNo}" value="수정"/>
+		<input type="button" class="delete?tNo=${view.tNo}" value="삭제"/>
 		<a href="/board/list">게시물 목록</a>
 	</div>
 </body>

@@ -48,8 +48,8 @@ public class BoardController {
 	}
 	 * */
 	@RequestMapping(value = "/modify", method = RequestMethod.GET)
-	public void getModify(@RequestParam("tNo, tPassword") long tNo, String tPassword, Model model) throws Exception {
-		BoardVO vo = service.checker(tNo, tPassword);
+	public void getModify(@RequestParam("tNo") long tNo, Model model) throws Exception {
+		BoardVO vo = service.view(tNo);
 		model.addAttribute("view", vo);
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
@@ -58,8 +58,8 @@ public class BoardController {
 		return "redirect:/board/view?tNo=" + vo.gettNo();
 	}
 	@RequestMapping(value = "/delete", method = RequestMethod.GET)
-	public String getDelete(@RequestParam("tNo") long tNo, String tPassword) throws Exception {
-		service.delete(tNo, tPassword);
+	public String getDelete(@RequestParam("tNo") long tNo) throws Exception {
+		service.delete(tNo);
 		return "redirect:/board/list";
 	}
 }
