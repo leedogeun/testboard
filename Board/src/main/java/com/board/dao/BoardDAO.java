@@ -103,8 +103,9 @@ public class BoardDAO implements BoardDAOinterface {
 			Class.forName(driver);
 			conn = DriverManager.getConnection(url, "boardMaster", "1234");
 			ppst = conn.prepareStatement(
-					"select tNo, tTitle, tWriter, tDate, tContents, tPassword from testboard.board where tNo = ?");
+					"select tNo, tTitle, tWriter, tDate, tContents from testboard.board where tNo = ?");
 			ppst.setLong(1, tNo);
+			
 			rs = ppst.executeQuery();
 			
 			if (rs.next()) {
@@ -114,9 +115,48 @@ public class BoardDAO implements BoardDAOinterface {
 				vo.settWriter(rs.getString("tWriter"));
 				vo.settDate(rs.getDate("tDate"));
 				vo.settContents(rs.getString("tContents"));
-				vo.settPassword(rs.getString("tPassword"));
 			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			try {
+				if (ppst != null)
+					ppst.close();
+				if (conn != null)
+					conn.close();
+			} catch (Exception e2) {
+				e2.getStackTrace();
+			}
+		}
+		return vo;
+	}
+	
+
+	@Override
+	public BoardVO check(long tNo, String tPassword) throws Exception {
+		String driver = "org.mariadb.jdbc.Driver";
+		String url = "jdbc:mariadb://127.0.0.1:3306/testboard";
+		Connection conn = null;
+		PreparedStatement ppst = null;
+		ResultSet rs = null;
+		BoardVO vo = null ;
+		try {
+			Class.forName(driver);
+			conn = DriverManager.getConnection(url, "boardMaster", "1234");
+			ppst = conn.prepareStatement(
+					"select tNo, tTitle, tWriter, tContents from testboard.board where tNo = ? and tPassword=?");
+			ppst.setLong(1, tNo);
+			ppst.setString(2, tPassword);
 			
+			rs = ppst.executeQuery();
+			
+			if (rs.next()) {
+				vo = new BoardVO();
+				vo.settNo(rs.getLong("tNo"));
+				vo.settTitle(rs.getString("tTitle"));
+				vo.settWriter(rs.getString("tWriter"));
+				vo.settContents(rs.getString("tContents"));
+			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
@@ -167,7 +207,7 @@ public class BoardDAO implements BoardDAOinterface {
 	}
 
 	@Override
-	public void delete(long tNo) throws Exception {
+	public void delete(long tNo, String tPassword) throws Exception {
 		String driver = "org.mariadb.jdbc.Driver";
 		String url = "jdbc:mariadb://127.0.0.1:3306/testboard";
 		Connection conn = null;
@@ -177,9 +217,11 @@ public class BoardDAO implements BoardDAOinterface {
 			conn = DriverManager.getConnection(url, "boardMaster", "1234");
 			ppst = conn.prepareStatement(""
 					+ "delete from testboard.board\r\n"
-					+ "		where tNo = ?");
+					+ "		where tNo = ?"
+					+ "	and tPassword =?");
 
 			ppst.setLong(1, tNo);
+			ppst.setString(2, tPassword);
 			ppst.executeUpdate();
 		} catch (Exception e) {
 			e.printStackTrace();

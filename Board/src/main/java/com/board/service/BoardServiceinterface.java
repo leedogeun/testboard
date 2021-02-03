@@ -11,7 +11,9 @@ public interface BoardServiceinterface {
 	
 	public BoardVO view(long tNo) throws Exception;
 	
+	public BoardVO check(long tNo, String tPassword) throws Exception;
+	
 	public void modify(BoardVO vo) throws Exception;
 	
-	public void delete(long tNo) throws Exception;
+	public void delete(long tNo, String tPassword) throws Exception;
 }
