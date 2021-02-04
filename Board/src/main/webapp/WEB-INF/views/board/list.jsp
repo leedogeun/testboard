@@ -29,10 +29,9 @@
 					<td>${list.tDate}</td>
 				</tr>
 			</c:forEach>
+
 		</tbody>
+			<a href = "/board/write">게시물 작성</a>
 	</table>
-	<div>
-		<a href="/board/write">게시물 작성</a>
-	</div>
 </body>
 </html>
