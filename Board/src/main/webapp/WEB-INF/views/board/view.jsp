@@ -5,10 +5,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-
-<script type="text/javascript">
-
-</script>
+<script src="https://code.jquery.com/jquery-3.5.1.js"></script>
 
 <title>게시물 내용</title>
 </head>
@@ -19,17 +16,41 @@
 	<br />
 	<label>내용</label> ${view.tContents }
 
-	<form id="check" action="" method="">
-		<label>비밀번호 
-			<input type="password" id="tpassword" placeholder="비밀번호를 적으세요">
+	<form role="check" method="POST">
+		<label>비밀번호
+			<input type="password" id="tPassword" placeholder="비밀번호를 적으세요">
 		</label>
-
-		<input id="modify" type="button" value="수정" >
-		<input id="delete" type="submit" value="삭제" onclick="">
-		<!-- onclick="javascript: form.action=/board/modify?tNo=${view.tNo}&tPassword=$('#tpassword').val()" 
-		 <a href="/board/modify?tNo=${view.tNo}">게시물 수정</a>
-		<a href="/board/delete?tNo=${view.tNo}">게시물 삭제</a>
-		 -->
+		<input id="modify" type="submit" value="수정">
+		<input id="delete" type="submit" value="삭제">
+		<input id="list" type="submit" value="목록">
 	</form>
 </body>
+
+<script type="text/javascript">
+var form = $("form[role='check']");
+	$("#modify")
+		.mousedown(	
+		<!--.click(-->
+				function() {
+					var pw = $("#tPassword").val();
+					console.log(pw);
+					form.attr("action","/board/modify?tNo="+${view.tNo}+"&tPassword="+pw);
+					form.submit();
+				});
+	$('#delete')
+		.mousedown(	
+				function() {
+					var pw = $("#tPassword").val();
+					console.log(pw);
+					form.attr("action","/board/delete?tNo="+${view.tNo}+"&tPassword="+pw);
+					form.submit();
+				});
+	$('#list')
+		.mousedown(	
+			function() {
+				form.attr("action","/board/list");
+				form.attr("method","GET");
+				form.submit();
+			});
+</script>
 </html>

@@ -30,8 +30,8 @@
 				</tr>
 			</c:forEach>
 
-			<p><a href="/board/write">게시물 작성</a>
 		</tbody>
+			<a href = "/board/write">게시물 작성</a>
 	</table>
 </body>
 </html>

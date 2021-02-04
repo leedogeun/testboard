@@ -9,7 +9,8 @@
 </head>
 <body>
 
-	<form action="/board/modify" method="post">
+	<form action="/board/update" method="post">
+		<input type="hidden" name="tNo" value="${view.tNo}">
 		<label>제목</label>
 		<input type="text" name="tTitle" value="${view.tTitle}" /><br />
 		
