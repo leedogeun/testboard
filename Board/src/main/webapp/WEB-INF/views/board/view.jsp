@@ -30,7 +30,7 @@
 var form = $("form[role='check']");
 	$("#modify")
 		.mousedown(	
-		<!--.click(-->
+		/* .click( */
 				function() {
 					var pw = $("#tPassword").val();
 					console.log(pw);
