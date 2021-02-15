@@ -4,25 +4,54 @@ public class PagingVO {
 	private int total;
 	private int now;
 	private int end;
-	private int stard;
+	private int start;
 	private int cntshow=10;
 	private int cntpage=5;
-	private int firstpage;
+	private int firstpage =1;
 	private int lastpage;
+	// 아래 두개 구지 필요 없음
 	private int efterpage;
 	private int endpage;
 	
 	public PagingVO() {
 		
 	}
-	/* 
-	public void makeLastPage(int total, int now, int cntpage) {
+	
+	public PagingVO(int total, int now, int cntpage) {
+		setTotal(total);
 		setNow(now);
 		setCntpage(cntpage);
-		setTotal(total);
-		setLastPage(getTotal,);
+		
+		makeLastpage(getTotal(),getCntshow());
+		
+		
 	}
-	 */
+	
+	//제일 마지막 페이지
+	public void makeLastpage(int total, int cntshow) {
+		setLastpage((int)(Math.ceil((double)total/(double)cntshow)));
+	}
+	
+	//보여지는 페이지들 시작과 끝
+	public void makeFirstendtpage(int now, int cntshow) {
+		setEndpage((int)Math.ceil((double)now/(double)cntshow)*cntshow);
+		/* 수정방향 -> 원래 라스트 가 엔드보다 작으면 라스트는 엔드가 되는식이다. 중간 값 도출이 힘들다
+		if(getLastpage()<getEndpage()) {
+			setEndpage();
+		}
+		 * */
+		
+		setTotal(total);
+		setNow(now);
+		// setCntpage(cntshow); 원래 화면에서 넘어 오는 값을 한다.
+		
+	}
+	
+	//글이 보여질 시작과 끝 값
+	public void makeStartent(int now, int cntshow) {
+		setEnd(now*cntshow);
+		setStart(getEnd()-cntshow +1);
+	}
 
 	
 	public int getTotal() {
@@ -49,14 +78,13 @@ public class PagingVO {
 		this.end = end;
 	}
 
-	public int getStard() {
-		return stard;
+	public int getStart() {
+		return start;
 	}
 
-	public void setStard(int stard) {
-		this.stard = stard;
+	public void setStart(int start) {
+		this.start = start;
 	}
-
 	public int getCntshow() {
 		return cntshow;
 	}
