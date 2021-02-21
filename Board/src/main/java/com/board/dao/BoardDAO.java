@@ -6,10 +6,53 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+
+import javax.inject.Inject;
+
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
 
 @Repository
 public class BoardDAO implements BoardDAOinterface {
+	
+	@Inject
+	private SqlSession sql;
+	@Mapper
+	private static String namespace = "boardMapper";
+
+
+	@Override
+	public List<BoardVO> list() throws Exception {
+		return sql.selectList(namespace + ".list");
+	}
+
+	@Override
+	public void write(BoardVO vo) throws Exception {
+		sql.insert(namespace + ".write", vo);
+	}
+
+	@Override
+	public BoardVO view(Long tNo) throws Exception {
+		return sql.selectOne(namespace + ".view", tNo);
+	}
+
+	@Override
+	public BoardVO check(BoardVO vo) throws Exception {
+		return sql.selectOne(namespace + ".view", vo);
+	}
+
+	@Override
+	public void modify(BoardVO vo) throws Exception {
+		sql.update(namespace + ".modify", vo);
+	}
+
+	@Override
+	public void delete(Long tNo, String tPassword) throws Exception {
+		sql.delete(namespace + ".delete", tNo);
+	}
+	
+	/*
 	@Override
 	public List<BoardVO> list() throws Exception {
 		String driver = "org.mariadb.jdbc.Driver";
@@ -92,7 +135,7 @@ public class BoardDAO implements BoardDAOinterface {
 	}
 
 	@Override
-	public BoardVO view(long tNo) throws Exception {
+	public BoardVO view(Long tNo) throws Exception {
 		String driver = "org.mariadb.jdbc.Driver";
 		String url = "jdbc:mariadb://127.0.0.1:3306/testboard";
 		Connection conn = null;
@@ -133,7 +176,7 @@ public class BoardDAO implements BoardDAOinterface {
 	
 
 	@Override
-	public BoardVO check(long tNo, String tPassword) throws Exception {
+	public BoardVO check(Long tNo, String tPassword) throws Exception {
 		String driver = "org.mariadb.jdbc.Driver";
 		String url = "jdbc:mariadb://127.0.0.1:3306/testboard";
 		Connection conn = null;
@@ -207,7 +250,7 @@ public class BoardDAO implements BoardDAOinterface {
 	}
 
 	@Override
-	public void delete(long tNo, String tPassword) throws Exception {
+	public void delete(Long tNo, String tPassword) throws Exception {
 		String driver = "org.mariadb.jdbc.Driver";
 		String url = "jdbc:mariadb://127.0.0.1:3306/testboard";
 		Connection conn = null;
@@ -235,38 +278,5 @@ public class BoardDAO implements BoardDAOinterface {
 				e2.getStackTrace();
 			}
 		}
-	}
-/**/
-	/* 이 구절 밑으론 사용이 안된다. namespace가 정상 작동 못함. 이유 모름; *
-	@Inject
-	private SqlSession sql;
-	@Mapper
-	private static String namespace = "com.board.mappers.board";
-
-	@Override
-	public List<BoardVO> list() throws Exception {
-		return sql.selectList(namespace + ".list");
-	}
-
-	@Override
-	public void write(BoardVO vo) throws Exception {
-		sql.insert(namespace + ".write", vo);
-	}
-
-	@Override
-	public BoardVO view(long tNo) throws Exception {
-		return sql.selectOne(namespace + ".view", tNo);
-	}
-
-	@Override
-	public void modify(BoardVO vo) throws Exception {
-		sql.update(namespace + ".modify", vo);
-	}
-
-	@Override
-	public void delete(long tNo) throws Exception {
-		sql.delete(namespace + ".delete", tNo);
-	}
-	*/
-
+	 * */
 }

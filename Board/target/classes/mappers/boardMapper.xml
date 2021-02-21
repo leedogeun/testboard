@@ -1,9 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
-<mapper namespace="com.board.mappers.board">
-<!-- 
-	<resultMap id="resul" type="com.board.dao.BoardVO">
+<mapper namespace="boardMapper">
+<!-- 	<resultMap id="resul" type="com.board.dao.BoardVO">
 		<result property="tNo" 			column="Tno" />
 		<result property="tTitle" 		column="Ttitle" />
 		<result property="tWriter" 		column="Twriter" />
@@ -11,20 +10,25 @@
 		<result property="tContents" 	column="Tcontents" />
 		<result property="tPassword" 	column="Tpassword" />
 		<result property="tReference" 	column="Treference" />
-	</resultMap>
- -->
-	<select id="list" resultMap="com.board.dao.com.board.dao.BoardVO">
+	</resultMap>	-->
+	<select id="list" resultMap="com.board.dao.BoardVO">
 		select tNo, tTitle, tWriter, tDate
 		from testboard.board
 	</select>
 	<insert id="write" parameterType="com.board.dao.BoardVO">
 		insert into testboard.board(tTitle, tWriter, tContents, tPassword)
-		values(#{tTitle}, #{tWriter}, #{tContents}, #{tPassword});
+		values(#{tTitle}, #{tWriter}, #{tContents}, #{tPassword})
 	</insert>
-	<select id="view" parameterType="long" resultMap="com.board.dao.BoardVO">
-		select tNo, tTitle, tWriter, tDate, tContents, tPassword
+	<select id="view" parameterType="Long" resultMap="com.board.dao.BoardVO">
+		select tNo, tTitle, tWriter, tDate, tContents
 		from testboard.board
-		where tNo = #{tNo};
+		where tNo = #{tNo}
+	</select>
+	<select id="check" parameterType="com.board.dao.BoardVO" resultMap="com.board.dao.BoardVO">
+		select tNo, tTitle, tWriter, tContents 
+		from testboard.board 
+		where tNo = #{tNo}
+		and tPassword = #{tPassword}
 	</select>
 	<update id="modify" parameterType="com.board.dao.BoardVO">
 		update testboard.board
@@ -32,9 +36,10 @@
 		tContents=#{tContents}
 		where tNo = #{tNo};
 	</update>
-	<delete id="delete" parameterType="long">
+	<delete id="delete" parameterType="com.board.dao.BoardVO">
 		delete from testboard.board
-		where tNo = #{tNo};
+		where tNo = #{tNo}
+		and tPassword = #{tPassword}
 	</delete>
 
 </mapper>

@@ -41,9 +41,12 @@ public class BoardController {
 		model.addAttribute("view", vo);
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public void getModify(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword, Model model) throws Exception {
-		BoardVO vo = service.check(tNo, tPassword);
-		model.addAttribute("view", vo);
+	public void postCheck(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword, Model model) throws Exception {
+		BoardVO vo = null;
+		vo.settNo(tNo);
+		vo.settPassword(tPassword);
+		BoardVO vvo = service.check(vo);
+		model.addAttribute("view", vvo);
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String postModify(BoardVO vo) throws Exception {

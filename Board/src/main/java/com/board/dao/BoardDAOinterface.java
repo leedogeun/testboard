@@ -7,12 +7,12 @@ public interface BoardDAOinterface {
 
 	public void write(BoardVO vo) throws Exception;
 
-	public BoardVO view(long tNo) throws Exception;
+	public BoardVO view(Long tNo) throws Exception;
 
-	public BoardVO check(long tNo, String tPassword) throws Exception;
+	public BoardVO check(BoardVO vo) throws Exception;
 
 	public void modify(BoardVO vo) throws Exception;
 
-	public void delete(long tNo, String tPassword) throws Exception;
+	public void delete(Long tNo, String tPassword) throws Exception;
 
 }
