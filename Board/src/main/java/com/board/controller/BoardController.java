@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.board.dao.BoardVO;
+import com.board.service.BoardService;
 import com.board.service.BoardServiceinterface;
 
 @Controller
@@ -18,13 +19,19 @@ import com.board.service.BoardServiceinterface;
 public class BoardController {
 
 	@Inject
-	BoardServiceinterface service;
+	BoardService service;
+//	BoardServiceinterface service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
+//	public String list(Model model) throws Exception{
 	public void getList(Model model) throws Exception {
+		/*
 		List<BoardVO> list = null;
 		list = service.list();
 		model.addAttribute("list", list);
+		 * */
+		model.addAttribute("list", service.list());
+//		return null;
 	}
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
@@ -34,7 +41,7 @@ public class BoardController {
 	public String postWrite(BoardVO vo) throws Exception {
 		service.write(vo);
 		return "redirect:/board/list";
-	}
+	} 
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public void getView(@RequestParam("tNo") Long tNo, Model model) throws Exception {
 		BoardVO vo = service.view(tNo);

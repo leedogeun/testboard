@@ -18,38 +18,47 @@ public class BoardDAO implements BoardDAOinterface {
 	
 	@Inject
 	private SqlSession sql;
+	/*
 	@Mapper
 	private static String namespace = "boardMapper";
+	 * */
 
 
 	@Override
 	public List<BoardVO> list() throws Exception {
-		return sql.selectList(namespace + ".list");
+		return sql.selectList("boardMapper.list");
+//		return sql.selectList(namespace + ".list");
 	}
 
 	@Override
 	public void write(BoardVO vo) throws Exception {
-		sql.insert(namespace + ".write", vo);
+		sql.insert("boardMapper.write", vo);
+//		sql.insert(namespace + ".write", vo);
 	}
 
 	@Override
 	public BoardVO view(Long tNo) throws Exception {
-		return sql.selectOne(namespace + ".view", tNo);
+		return sql.selectOne("boardMapper.view", tNo);
+//		return sql.selectOne(namespace + ".view", tNo);
 	}
 
 	@Override
-	public BoardVO check(BoardVO vo) throws Exception {
-		return sql.selectOne(namespace + ".view", vo);
+	@Override
+	public BoardVO check(Long tNo, String tPassword) throws Exception {
+		return sql.selectOne("boardMapper.view", tNo+tPassword);
+//		return sql.selectOne(namespace + ".view", vo);
 	}
 
 	@Override
 	public void modify(BoardVO vo) throws Exception {
-		sql.update(namespace + ".modify", vo);
+		sql.update("boardMapper.modify", vo);
+//		sql.update(namespace + ".modify", vo);
 	}
 
 	@Override
 	public void delete(Long tNo, String tPassword) throws Exception {
-		sql.delete(namespace + ".delete", tNo);
+		sql.delete("boardMapper.delete", tNo+tPassword);
+//		sql.delete(namespace + ".delete", tNo);
 	}
 	
 	/*

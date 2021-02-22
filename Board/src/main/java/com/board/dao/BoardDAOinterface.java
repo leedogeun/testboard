@@ -9,7 +9,8 @@ public interface BoardDAOinterface {
 
 	public BoardVO view(Long tNo) throws Exception;
 
-	public BoardVO check(BoardVO vo) throws Exception;
+//	public BoardVO check(BoardVO vo) throws Exception;
+	public BoardVO check(Long tNo, String tPassword) throws Exception;
 
 	public void modify(BoardVO vo) throws Exception;
 

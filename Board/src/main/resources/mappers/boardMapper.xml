@@ -11,7 +11,7 @@
 		<result property="tPassword" 	column="Tpassword" />
 		<result property="tReference" 	column="Treference" />
 	</resultMap>	-->
-	<select id="list" resultMap="com.board.dao.BoardVO">
+	<select id="list" resultType="com.board.dao.BoardVO">
 		select tNo, tTitle, tWriter, tDate
 		from testboard.board
 	</select>
@@ -19,12 +19,12 @@
 		insert into testboard.board(tTitle, tWriter, tContents, tPassword)
 		values(#{tTitle}, #{tWriter}, #{tContents}, #{tPassword})
 	</insert>
-	<select id="view" parameterType="Long" resultMap="com.board.dao.BoardVO">
+	<select id="view" parameterType="Long" resultType="com.board.dao.BoardVO">
 		select tNo, tTitle, tWriter, tDate, tContents
 		from testboard.board
 		where tNo = #{tNo}
 	</select>
-	<select id="check" parameterType="com.board.dao.BoardVO" resultMap="com.board.dao.BoardVO">
+	<select id="check" parameterType="com.board.dao.BoardVO" resultType="com.board.dao.BoardVO">
 		select tNo, tTitle, tWriter, tContents 
 		from testboard.board 
 		where tNo = #{tNo}

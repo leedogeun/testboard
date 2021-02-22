@@ -7,12 +7,14 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 
 import com.board.dao.BoardDAO;
+import com.board.dao.BoardDAOinterface;
 import com.board.dao.BoardVO;
 
 @Service
 public class BoardService implements BoardServiceinterface {
 
 	@Inject
+//	private BoardDAOinterface dao;
 	private BoardDAO dao;
 	
 	@Override
@@ -29,8 +31,10 @@ public class BoardService implements BoardServiceinterface {
 	}
 	
 	@Override
-	public BoardVO check(BoardVO vo) throws Exception {
-		return dao.check(vo);
+	public BoardVO check(Long tNo, String tPassword) throws Exception {
+//	public BoardVO check(BoardVO vo) throws Exception {
+//		return dao.check(vo);
+		return dao.check(tNo, tPassword);
 	}
 	@Override
 	public void modify(BoardVO vo) throws Exception {
