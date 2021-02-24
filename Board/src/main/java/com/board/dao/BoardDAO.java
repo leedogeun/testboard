@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import javax.inject.Inject;
 
@@ -22,43 +23,34 @@ public class BoardDAO implements BoardDAOinterface {
 	@Mapper
 	private static String namespace = "boardMapper";
 	 * */
-
-
 	@Override
 	public List<BoardVO> list() throws Exception {
 		return sql.selectList("boardMapper.list");
-//		return sql.selectList(namespace + ".list");
 	}
 
 	@Override
 	public void write(BoardVO vo) throws Exception {
 		sql.insert("boardMapper.write", vo);
-//		sql.insert(namespace + ".write", vo);
 	}
 
 	@Override
 	public BoardVO view(Long tNo) throws Exception {
 		return sql.selectOne("boardMapper.view", tNo);
-//		return sql.selectOne(namespace + ".view", tNo);
 	}
 
 	@Override
-	@Override
-	public BoardVO check(Long tNo, String tPassword) throws Exception {
-		return sql.selectOne("boardMapper.view", tNo+tPassword);
-//		return sql.selectOne(namespace + ".view", vo);
+	public int check(Map<String, Object> map) throws Exception {
+		return sql.selectOne("boardMapper.check", map);
 	}
 
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		sql.update("boardMapper.modify", vo);
-//		sql.update(namespace + ".modify", vo);
 	}
 
 	@Override
-	public void delete(Long tNo, String tPassword) throws Exception {
-		sql.delete("boardMapper.delete", tNo+tPassword);
-//		sql.delete(namespace + ".delete", tNo);
+	public int delete(Map<String, Object> map) throws Exception {
+		return sql.delete("boardMapper.delete", map);
 	}
 	
 	/*

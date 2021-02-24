@@ -24,8 +24,8 @@
 		from testboard.board
 		where tNo = #{tNo}
 	</select>
-	<select id="check" parameterType="com.board.dao.BoardVO" resultType="com.board.dao.BoardVO">
-		select tNo, tTitle, tWriter, tContents 
+	<select id="check" parameterType="Map" resultType="Integer">
+		select count(*) 
 		from testboard.board 
 		where tNo = #{tNo}
 		and tPassword = #{tPassword}
@@ -36,7 +36,7 @@
 		tContents=#{tContents}
 		where tNo = #{tNo};
 	</update>
-	<delete id="delete" parameterType="com.board.dao.BoardVO">
+	<delete id="delete" parameterType="Map">
 		delete from testboard.board
 		where tNo = #{tNo}
 		and tPassword = #{tPassword}

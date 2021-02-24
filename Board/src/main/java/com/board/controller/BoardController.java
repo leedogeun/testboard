@@ -1,18 +1,15 @@
 package com.board.controller;
 
-import java.util.List;
-
+import java.util.HashMap;
+import java.util.Map;
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-
 import com.board.dao.BoardVO;
 import com.board.service.BoardService;
-import com.board.service.BoardServiceinterface;
 
 @Controller
 @RequestMapping("/board/*")
@@ -20,18 +17,10 @@ public class BoardController {
 
 	@Inject
 	BoardService service;
-//	BoardServiceinterface service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-//	public String list(Model model) throws Exception{
 	public void getList(Model model) throws Exception {
-		/*
-		List<BoardVO> list = null;
-		list = service.list();
-		model.addAttribute("list", list);
-		 * */
 		model.addAttribute("list", service.list());
-//		return null;
 	}
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
@@ -49,11 +38,17 @@ public class BoardController {
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public void postCheck(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword, Model model) throws Exception {
-		BoardVO vo = null;
-		vo.settNo(tNo);
-		vo.settPassword(tPassword);
-		BoardVO vvo = service.check(vo);
-		model.addAttribute("view", vvo);
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("tNo", tNo);
+		map.put("tPassword", tPassword);
+		int a = service.check(map);
+		BoardVO vo = service.view(tNo);
+		
+		if (a == 1) {
+			model.addAttribute("modify", vo);
+		}else {
+			return;
+		}
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String postModify(BoardVO vo) throws Exception {
@@ -62,7 +57,15 @@ public class BoardController {
 	}
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String getDelete(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword) throws Exception {
-		service.delete(tNo,tPassword);
-		return "redirect:/board/list";
+		Map<String, Object> map = new HashMap<String, Object>();
+		map.put("tNo", tNo);
+		map.put("tPassword", tPassword);
+		int a = service.check(map);
+		
+		if (a == 1) {
+			return "redirect:/board/list";
+		}else {
+			return "redirect:/board/view?tNo=" + tNo;
+		}
 	}
 }

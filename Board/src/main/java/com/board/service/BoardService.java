@@ -1,13 +1,10 @@
 package com.board.service;
 
 import java.util.List;
-
+import java.util.Map;
 import javax.inject.Inject;
-
 import org.springframework.stereotype.Service;
-
 import com.board.dao.BoardDAO;
-import com.board.dao.BoardDAOinterface;
 import com.board.dao.BoardVO;
 
 @Service
@@ -31,17 +28,15 @@ public class BoardService implements BoardServiceinterface {
 	}
 	
 	@Override
-	public BoardVO check(Long tNo, String tPassword) throws Exception {
-//	public BoardVO check(BoardVO vo) throws Exception {
-//		return dao.check(vo);
-		return dao.check(tNo, tPassword);
+	public int check(Map<String, Object> map) throws Exception {
+		return dao.check(map);
 	}
 	@Override
 	public void modify(BoardVO vo) throws Exception {
 		dao.modify(vo);
 	}
 	@Override
-	public void delete(Long tNo, String tPassword) throws Exception {
-		dao.delete(tNo, tPassword);
+	public int delete(Map<String, Object> map) throws Exception {
+		return dao.delete(map);
 	}
 }
