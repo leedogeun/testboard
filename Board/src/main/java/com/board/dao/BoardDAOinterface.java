@@ -14,6 +14,6 @@ public interface BoardDAOinterface {
 
 	public void modify(BoardVO vo) throws Exception;
 
-	public int delete(Map<String, Object> map) throws Exception;
+	public int delete(Long tNo) throws Exception;
 
 }

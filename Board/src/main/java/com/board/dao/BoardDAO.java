@@ -49,8 +49,8 @@ public class BoardDAO implements BoardDAOinterface {
 	}
 
 	@Override
-	public int delete(Map<String, Object> map) throws Exception {
-		return sql.delete("boardMapper.delete", map);
+	public int delete(Long tNo) throws Exception {
+		return sql.delete("boardMapper.delete", tNo);
 	}
 	
 	/*

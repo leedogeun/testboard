@@ -36,10 +36,9 @@
 		tContents=#{tContents}
 		where tNo = #{tNo};
 	</update>
-	<delete id="delete" parameterType="Map">
+	<delete id="delete" parameterType="Long">
 		delete from testboard.board
 		where tNo = #{tNo}
-		and tPassword = #{tPassword}
 	</delete>
 
 </mapper>

@@ -36,7 +36,7 @@ public class BoardService implements BoardServiceinterface {
 		dao.modify(vo);
 	}
 	@Override
-	public int delete(Map<String, Object> map) throws Exception {
-		return dao.delete(map);
+	public int delete(Long tNo) throws Exception {
+		return dao.delete(tNo);
 	}
 }

@@ -42,12 +42,17 @@ public class BoardController {
 		map.put("tNo", tNo);
 		map.put("tPassword", tPassword);
 		int a = service.check(map);
+		
+		System.out.println("a:"+a+", tno:"+tNo);
+		
 		BoardVO vo = service.view(tNo);
 		
 		if (a == 1) {
+			System.out.println("1");
 			model.addAttribute("modify", vo);
 		}else {
-			return;
+			System.out.println("2");
+			model.addAttribute("view", vo);
 		}
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -63,6 +68,7 @@ public class BoardController {
 		int a = service.check(map);
 		
 		if (a == 1) {
+			service.delete(tNo);
 			return "redirect:/board/list";
 		}else {
 			return "redirect:/board/view?tNo=" + tNo;
