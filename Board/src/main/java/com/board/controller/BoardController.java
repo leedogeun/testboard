@@ -37,22 +37,17 @@ public class BoardController {
 		model.addAttribute("view", vo);
 	}
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
-	public void postCheck(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword, Model model) throws Exception {
+	public String postCheck(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword, Model model) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("tNo", tNo);
 		map.put("tPassword", tPassword);
 		int a = service.check(map);
-		
-		System.out.println("a:"+a+", tno:"+tNo);
-		
 		BoardVO vo = service.view(tNo);
-		
 		if (a == 1) {
-			System.out.println("1");
-			model.addAttribute("modify", vo);
-		}else {
-			System.out.println("2");
 			model.addAttribute("view", vo);
+			return "/board/modify";
+		}else {
+			return "redirect:/board/view?tNo=" + tNo;
 		}
 	}
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
@@ -61,12 +56,11 @@ public class BoardController {
 		return "redirect:/board/view?tNo=" + vo.gettNo();
 	}
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
-	public String getDelete(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword) throws Exception {
+	public String postDelete(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
 		map.put("tNo", tNo);
 		map.put("tPassword", tPassword);
 		int a = service.check(map);
-		
 		if (a == 1) {
 			service.delete(tNo);
 			return "redirect:/board/list";

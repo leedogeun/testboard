@@ -32,7 +32,7 @@
 			</c:forEach>
 
 		</tbody>
-			<a href = "/board/write">게시물 작성</a>
 	</table>
+	<a href="/board/write">게시물 작성</a>
 </body>
 </html>

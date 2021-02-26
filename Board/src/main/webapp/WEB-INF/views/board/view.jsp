@@ -33,7 +33,6 @@ var form = $("form[role='check']");
 		/* .click( */
 				function() {
 					var pw = $("#tPassword").val();
-					console.log(pw);
 					form.attr("action","/board/modify?tNo="+${view.tNo}+"&tPassword="+pw);
 					form.submit();
 				});
@@ -41,7 +40,6 @@ var form = $("form[role='check']");
 		.mousedown(	
 				function() {
 					var pw = $("#tPassword").val();
-					console.log(pw);
 					form.attr("action","/board/delete?tNo="+${view.tNo}+"&tPassword="+pw);
 					form.submit();
 				});
