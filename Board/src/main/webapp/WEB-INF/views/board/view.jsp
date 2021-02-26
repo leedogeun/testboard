@@ -29,22 +29,22 @@
 <script type="text/javascript">
 var form = $("form[role='check']");
 	$("#modify")
-		.mousedown(	
-		/* .click( */
+		.click(	
+		/* .mousedown( */
 				function() {
 					var pw = $("#tPassword").val();
 					form.attr("action","/board/modify?tNo="+${view.tNo}+"&tPassword="+pw);
 					form.submit();
 				});
 	$('#delete')
-		.mousedown(	
+		.click(	
 				function() {
 					var pw = $("#tPassword").val();
 					form.attr("action","/board/delete?tNo="+${view.tNo}+"&tPassword="+pw);
 					form.submit();
 				});
 	$('#list')
-		.mousedown(	
+		.click(	
 			function() {
 				form.attr("action","/board/list");
 				form.attr("method","GET");

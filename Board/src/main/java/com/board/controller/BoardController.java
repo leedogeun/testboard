@@ -61,11 +61,13 @@ public class BoardController {
 		map.put("tNo", tNo);
 		map.put("tPassword", tPassword);
 		int a = service.check(map);
+		
 		if (a == 1) {
 			service.delete(tNo);
 			return "redirect:/board/list";
 		}else {
 			return "redirect:/board/view?tNo=" + tNo;
 		}
+		
 	}
 }
