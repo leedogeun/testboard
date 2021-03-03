@@ -22,20 +22,24 @@ public class BoardController {
 	public void getList(Model model) throws Exception {
 		model.addAttribute("list", service.list());
 	}
+	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)
 	public void getWrite() throws Exception {
 
 	}
+	
 	@RequestMapping(value = "/write", method = RequestMethod.POST)
 	public String postWrite(BoardVO vo) throws Exception {
 		service.write(vo);
 		return "redirect:/board/list";
-	} 
+	}
+	
 	@RequestMapping(value = "/view", method = RequestMethod.GET)
 	public void getView(@RequestParam("tNo") Long tNo, Model model) throws Exception {
 		BoardVO vo = service.view(tNo);
 		model.addAttribute("view", vo);
 	}
+	
 	@RequestMapping(value = "/modify", method = RequestMethod.POST)
 	public String postCheck(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword, Model model) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -50,11 +54,13 @@ public class BoardController {
 			return "redirect:/board/view?tNo=" + tNo;
 		}
 	}
+	
 	@RequestMapping(value = "/update", method = RequestMethod.POST)
 	public String postModify(BoardVO vo) throws Exception {
 		service.modify(vo);
 		return "redirect:/board/view?tNo=" + vo.gettNo();
 	}
+	
 	@RequestMapping(value = "/delete", method = RequestMethod.POST)
 	public String postDelete(@RequestParam("tNo") Long tNo, @RequestParam("tPassword") String tPassword) throws Exception {
 		Map<String, Object> map = new HashMap<String, Object>();
@@ -68,6 +74,5 @@ public class BoardController {
 		}else {
 			return "redirect:/board/view?tNo=" + tNo;
 		}
-		
 	}
 }

@@ -11,13 +11,11 @@ public class BoardDAO implements BoardDAOinterface {
 	
 	@Inject
 	private SqlSession sql;
-	/*
-	@Mapper
-	private static String namespace = "boardMapper";
-	 * */
+	
 	@Override
 	public List<BoardVO> list() throws Exception {
-		return sql.selectList("boardMapper.list");
+		return sql.selectList("boardMapper.partlist");
+//		return sql.selectList("boardMapper.list");
 	}
 
 	@Override
@@ -44,8 +42,16 @@ public class BoardDAO implements BoardDAOinterface {
 	public int delete(Long tNo) throws Exception {
 		return sql.delete("boardMapper.delete", tNo);
 	}
+
+	@Override
+	public int total() throws Exception {
+		// 여기가 의심 스럽다. 왜 이럴까?
+		return sql.selectOne("boardMapper.total");
+	}
 	
-	/*
+	/* 
+	@Mapper
+	private static String namespace = "boardMapper";
 	@Override
 	public List<BoardVO> list() throws Exception {
 		String driver = "org.mariadb.jdbc.Driver";
@@ -166,7 +172,6 @@ public class BoardDAO implements BoardDAOinterface {
 		}
 		return vo;
 	}
-	
 
 	@Override
 	public BoardVO check(Long tNo, String tPassword) throws Exception {

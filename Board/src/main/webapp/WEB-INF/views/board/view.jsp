@@ -30,7 +30,6 @@
 var form = $("form[role='check']");
 	$("#modify")
 		.click(	
-		/* .mousedown( */
 				function() {
 					var pw = $("#tPassword").val();
 					form.attr("action","/board/modify?tNo="+${view.tNo}+"&tPassword="+pw);

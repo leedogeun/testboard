@@ -39,4 +39,9 @@ public class BoardService implements BoardServiceinterface {
 	public int delete(Long tNo) throws Exception {
 		return dao.delete(tNo);
 	}
+	@Override
+	public int total() throws Exception {
+		return dao.total();
+	}
+	
 }

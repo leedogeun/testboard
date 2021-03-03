@@ -2,15 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="boardMapper">
-<!-- 	<resultMap id="resul" type="com.board.dao.BoardVO">
-		<result property="tNo" 			column="Tno" />
-		<result property="tTitle" 		column="Ttitle" />
-		<result property="tWriter" 		column="Twriter" />
-		<result property="tDate" 		column="Tdate" javaType="java.sql.Date"/>
-		<result property="tContents" 	column="Tcontents" />
-		<result property="tPassword" 	column="Tpassword" />
-		<result property="tReference" 	column="Treference" />
-	</resultMap>	-->
+
 	<select id="list" resultType="com.board.dao.BoardVO">
 		select tNo, tTitle, tWriter, tDate
 		from testboard.board
@@ -40,5 +32,29 @@
 		delete from testboard.board
 		where tNo = #{tNo}
 	</delete>
+	
+	<!-- 모든 게시글수 -->
+	<select id="total" resultType="Integer">
+		select count(*)
+		from testboard.board 
+	</select>
+	<!-- 각 목록별 불러올 게시글 -->
+	<select id="partlist" resultType="com.board.dao.BoardVO">
+		select tNo, tTitle, tWriter, tDate
+		from testboard.board
+		order by tNo desc 
+		limit #{start}, #{cntshow}
+	</select>
 
+
+
+<!-- 	<resultMap id="resul" type="com.board.dao.BoardVO">
+		<result property="tNo" 			column="Tno" />
+		<result property="tTitle" 		column="Ttitle" />
+		<result property="tWriter" 		column="Twriter" />
+		<result property="tDate" 		column="Tdate" javaType="java.sql.Date"/>
+		<result property="tContents" 	column="Tcontents" />
+		<result property="tPassword" 	column="Tpassword" />
+		<result property="tReference" 	column="Treference" />
+	</resultMap>	-->
 </mapper>
