@@ -17,10 +17,9 @@ public class PagingVO {
 	}
 	
 	public PagingVO(int total,int nowpage, int cntshow) {
+		setTotal(total);
 		setNowpage(nowpage);
 		setCntshow(cntshow);
-		setTotal(total);
-		
 	}
 	// lastpage 만들기
 	public void makeLastPage(int total, int cntshow) {
@@ -35,6 +34,7 @@ public class PagingVO {
 		}
 		
 		setFirstpage(getEndpage() - cntpage +1);
+		
 		if(getFirstpage()<1) {
 			//현재 목록의 값이 음수(첫페이지에서 발생)일시 1페이지로 고정
 			setFirstpage(1);

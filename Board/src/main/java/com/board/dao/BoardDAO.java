@@ -5,6 +5,7 @@ import java.util.Map;
 import javax.inject.Inject;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.stereotype.Repository;
+import com.board.paging.Criteria;
 
 @Repository
 public class BoardDAO implements BoardDAOinterface {
@@ -13,9 +14,14 @@ public class BoardDAO implements BoardDAOinterface {
 	private SqlSession sql;
 	
 	@Override
-	public List<BoardVO> list() throws Exception {
-		return sql.selectList("boardMapper.partlist");
+	public List<Map<String, Object>> list(Criteria cri) throws Exception {
+		return sql.selectList("boardMapper.partlist", cri);
 //		return sql.selectList("boardMapper.list");
+	}
+
+	@Override
+	public int count() throws Exception {
+		return sql.selectOne("boardMapper.total");
 	}
 
 	@Override
@@ -49,7 +55,7 @@ public class BoardDAO implements BoardDAOinterface {
 		return sql.selectOne("boardMapper.total");
 	}
 	
-	/* 
+/* 
 	@Mapper
 	private static String namespace = "boardMapper";
 	@Override
@@ -244,7 +250,6 @@ public class BoardDAO implements BoardDAOinterface {
 				e2.getStackTrace();
 			}
 		}
-
 	}
 
 	@Override
@@ -276,5 +281,5 @@ public class BoardDAO implements BoardDAOinterface {
 				e2.getStackTrace();
 			}
 		}
-	 * */
+*/
 }

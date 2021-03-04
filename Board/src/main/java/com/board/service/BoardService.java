@@ -6,6 +6,7 @@ import javax.inject.Inject;
 import org.springframework.stereotype.Service;
 import com.board.dao.BoardDAO;
 import com.board.dao.BoardVO;
+import com.board.paging.Criteria;
 
 @Service
 public class BoardService implements BoardServiceinterface {
@@ -15,9 +16,15 @@ public class BoardService implements BoardServiceinterface {
 	private BoardDAO dao;
 	
 	@Override
-	public List<BoardVO> list() throws Exception {
-		return dao.list();
+	public List<Map<String, Object>> list(Criteria cri) throws Exception {
+		return dao.list(cri);
 	}
+	
+	@Override
+	public int count() throws Exception {
+		return dao.count();
+	}
+
 	@Override
 	public void write(BoardVO vo) throws Exception {
 		dao.write(vo);

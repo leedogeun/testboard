@@ -3,8 +3,12 @@ package com.board.dao;
 import java.util.List;
 import java.util.Map;
 
+import com.board.paging.Criteria;
+
 public interface BoardDAOinterface {
-	public List<BoardVO> list() throws Exception;
+	public List<Map<String, Object>> list(Criteria cri) throws Exception;
+	
+	public int count() throws Exception;
 
 	public void write(BoardVO vo) throws Exception;
 

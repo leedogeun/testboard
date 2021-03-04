@@ -1,6 +1,7 @@
 package com.board.controller;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import javax.inject.Inject;
 import org.springframework.stereotype.Controller;
@@ -8,7 +9,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.ModelAndView;
 import com.board.dao.BoardVO;
+import com.board.paging.Criteria;
+import com.board.paging.Maker;
 import com.board.service.BoardService;
 
 @Controller
@@ -19,8 +23,19 @@ public class BoardController {
 	BoardService service;
 
 	@RequestMapping(value = "/list", method = RequestMethod.GET)
-	public void getList(Model model) throws Exception {
-		model.addAttribute("list", service.list());
+	public ModelAndView openBoardList(Criteria cri) throws Exception {
+		ModelAndView mv = new ModelAndView("/board/list");
+		
+		Maker mk = new Maker();
+		mk.setCri(cri);
+		mk.setTotal(service.count());
+		
+		List<Map<String, Object>> list = service.list(cri);
+		
+		mv.addObject("list", list);
+		mv.addObject("Maker", mk);
+		
+		return mv;
 	}
 	
 	@RequestMapping(value = "/write", method = RequestMethod.GET)

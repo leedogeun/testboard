@@ -39,11 +39,11 @@
 		from testboard.board 
 	</select>
 	<!-- 각 목록별 불러올 게시글 -->
-	<select id="partlist" resultType="com.board.dao.BoardVO">
+	<select id="partlist" resultType="hashmap" parameterType="hashmap">
 		select tNo, tTitle, tWriter, tDate
 		from testboard.board
 		order by tNo desc 
-		limit #{start}, #{cntshow}
+		limit #{somePage}, #{cntBulletin}
 	</select>
 
 

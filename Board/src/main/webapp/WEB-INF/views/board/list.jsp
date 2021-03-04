@@ -33,6 +33,27 @@
 
 		</tbody>
 	</table>
+	<ul>
+		<c:if test="${mk.prev }">
+		<li>
+			<a href='<c:url value="/board/list?page=${mk.startPage-1 }"/>'></a>
+		</li>
+		</c:if>
+		<c:forEach begin="${mk.startPage}" end="${mk.endPage }" var="pageNum">
+			<li>
+				<a href='<c:url value="/board/list?page=${pageNum }"/>'>${pageNum }</a>
+			</li>
+		</c:forEach>
+		
+		<c:if test="${mk.next && mk.endPage >0 }">
+    		<li>
+        		<a href='<c:url value="/board/list?page=${mk.endPage+1 }"/>'></a>
+    		</li>
+    	</c:if>
+	</ul>
+	
+	
+	
 	<a href="/board/write">게시물 작성</a>
 </body>
 </html>
