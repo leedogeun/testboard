@@ -40,10 +40,13 @@
 	</select>
 	<!-- 각 목록별 불러올 게시글 -->
 	<select id="partlist" resultType="hashmap" parameterType="hashmap">
-		select tNo, tTitle, tWriter, tDate
-		from testboard.board
-		order by tNo desc 
-		limit #{somePage}, #{cntBulletin}
+		select @rownum := @rownum +1 as no , board.*
+		from (
+			select tNo, tTitle, tWriter, tDate, @rownum:= #{somePage}
+			from testboard.board
+			order by tNo desc 
+			limit #{somePage}, #{cntBulletin}
+			) as board
 	</select>
 
 

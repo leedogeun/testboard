@@ -17,11 +17,11 @@ public class Criteria {
 		return nowPage;
 	}
 	
-	public void setNowPage(int nowPage) {
-		if (nowPage < 0) {
+	public void setNowPage(int Page) {
+		if (Page < 0) {
 			this.nowPage = 1;
 		}else {
-			this.nowPage = nowPage;
+			this.nowPage = Page;
 		}
 	}
 	

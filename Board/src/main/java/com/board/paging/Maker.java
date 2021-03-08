@@ -6,7 +6,7 @@ public class Maker {
 	private int total;
 	private int startPage;
 	private int endPage;
-	private int cntPage = 5;
+	private int cntPage = 10;
 	private boolean prev;
 	private boolean next;
 	

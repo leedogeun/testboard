@@ -24,7 +24,7 @@
 		<tbody>
 			<c:forEach items="${list}" var="list">
 				<tr>
-					<td>${list.tNo}</td>
+					<td><fmt:formatNumber type="number" maxFractionDigits="3" value="${list.no}"/></td>
 					<td><a href="/board/view?tNo=${list.tNo}">${list.tTitle}</a></td>
 					<td>${list.tWriter}</td>
 					<td><fmt:formatDate value="${list.tDate}" pattern="yyyy-MM-dd" /></td>
@@ -34,20 +34,20 @@
 		</tbody>
 	</table>
 	<ul>
-		<c:if test="${mk.prev }">
+		<c:if test="${Maker.prev }">
 		<li>
-			<a href='<c:url value="/board/list?page=${mk.startPage-1 }"/>'></a>
+			<a href='<c:url value="/board/list?page=${Maker.startPage-1 }"/>'>prev</a>
 		</li>
 		</c:if>
-		<c:forEach begin="${mk.startPage}" end="${mk.endPage }" var="pageNum">
-			<li>
+		<c:forEach begin="${Maker.startPage}" end="${Maker.endPage }" var="pageNum">
+			<span>
 				<a href='<c:url value="/board/list?page=${pageNum }"/>'>${pageNum }</a>
-			</li>
+			</span>
 		</c:forEach>
 		
-		<c:if test="${mk.next && mk.endPage >0 }">
+		<c:if test="${Maker.next && Maker.endPage >0 }">
     		<li>
-        		<a href='<c:url value="/board/list?page=${mk.endPage+1 }"/>'></a>
+        		<a href='<c:url value="/board/list?page=${Maker.endPage+1 }"/>'>next</a>
     		</li>
     	</c:if>
 	</ul>
