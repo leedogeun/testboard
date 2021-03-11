@@ -51,7 +51,6 @@ public class BoardDAO implements BoardDAOinterface {
 
 	@Override
 	public int total() throws Exception {
-		// 여기가 의심 스럽다. 왜 이럴까?
 		return sql.selectOne("boardMapper.total");
 	}
 	

@@ -24,6 +24,11 @@
 		<input id="delete" type="submit" value="삭제">
 		<input id="list" type="submit" value="목록">
 	</form>
+	
+	<hr>
+	
+	<%@ include file="../board/reply.jsp" %>
+	
 </body>
 
 <script type="text/javascript">
